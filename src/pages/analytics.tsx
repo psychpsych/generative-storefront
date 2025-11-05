@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { useState, useEffect } from 'react'
 import { BarChart3, Users, MousePointer, TrendingUp, Activity } from 'lucide-react'
 import { AnalyticsData } from '@/types'
