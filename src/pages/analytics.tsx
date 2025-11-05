@@ -15,7 +15,12 @@ const Analytics: React.FC = () => {
   const fetchAnalytics = async () => {
     try {
       setIsLoading(true)
-      const response = await fetch('/api/analytics')
+      // Get the base URL for API calls
+      const baseURL = process.env.NODE_ENV === 'production' 
+        ? `https://${window.location.hostname}` 
+        : '';
+      
+      const response = await fetch(`${baseURL}/api/analytics`)
       
       if (!response.ok) {
         throw new Error('Failed to fetch analytics')

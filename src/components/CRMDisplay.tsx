@@ -35,8 +35,13 @@ const CRMDisplay: React.FC<CRMDisplayProps> = ({ userId = 'user_001', onUserSwit
   const fetchCRMData = async () => {
     try {
       setLoading(true)
+      // Get the base URL for API calls
+      const baseURL = process.env.NODE_ENV === 'production' 
+        ? `https://${window.location.hostname}` 
+        : '';
+      
       // Simulate API call - in real app this would be an actual API endpoint
-      const response = await fetch('/api/crm/user', {
+      const response = await fetch(`${baseURL}/api/crm/user`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ userId })

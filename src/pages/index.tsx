@@ -52,7 +52,12 @@ export default function Home() {
     try {
       console.log(`🚀 API Call: Sending request for user ${currentUserId} with intent: "${intent}"`);
       
-      const response = await fetch('/api/intent', {
+      // Get the base URL for API calls
+      const baseURL = process.env.NODE_ENV === 'production' 
+        ? `https://${window.location.hostname}` 
+        : '';
+      
+      const response = await fetch(`${baseURL}/api/intent`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
