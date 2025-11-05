@@ -197,6 +197,10 @@ EMOTIONAL CONTEXT ANALYSIS:
 USER INTENT: "${intent}"
 
 CUSTOMER PROFILE:
+- Name: ${userProfile?.name || 'Unknown Customer'}
+- Age: ${userProfile?.age || 'Unknown'}
+- Gender: ${userProfile?.gender || 'Unknown'}
+- Location: ${userProfile?.location || 'Unknown'}
 - Segment: ${insights.customerSegment}
 - Style DNA: ${personalizationData?.recommendedStyles?.join(', ') || 'Unknown style preferences'}
 - Budget Range: €${personalizationData?.priceRange?.min || 0}-${personalizationData?.priceRange?.max || 1000}

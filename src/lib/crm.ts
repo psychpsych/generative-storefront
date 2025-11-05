@@ -4,6 +4,7 @@ export interface UserCRMProfile {
   name: string
   email: string
   age: number
+  gender: 'female' | 'male' | 'non-binary' | 'prefer-not-to-say'
   location: string
   memberSince: string
   totalSpent: number
@@ -62,6 +63,7 @@ const dummyUsers: UserCRMProfile[] = [
     name: 'Sofia Chen',
     email: 'sofia.chen@email.com',
     age: 29,
+    gender: 'female',
     location: 'New York',
     memberSince: '2023-03-15',
     totalSpent: 2847.50,
@@ -99,6 +101,7 @@ const dummyUsers: UserCRMProfile[] = [
     name: 'Emma Rodriguez',
     email: 'emma.rodriguez@email.com',
     age: 24,
+    gender: 'female',
     location: 'Los Angeles',
     memberSince: '2024-01-20',
     totalSpent: 1289.75,
@@ -136,6 +139,7 @@ const dummyUsers: UserCRMProfile[] = [
     name: 'Isabella Park',
     email: 'isabella.park@email.com',
     age: 35,
+    gender: 'female',
     location: 'Paris',
     memberSince: '2022-08-10',
     totalSpent: 5247.80,

@@ -24,8 +24,8 @@ export default function Home() {
 
   // Loading messages array
   const loadingTexts = [
-    "🤖 Duygularınızı analiz ediyorum...",
-    "✨ Size özel ürünler arıyorum...",
+    "🔍 Size en uygun seçenekleri arıyorum...",
+    "✨ Kişisel tercihleri analiz ediyorum...",
     "🎨 Stilinize uygun öneriler hazırlıyorum...",
     "💫 Mükemmel eşleşmeleri buluyorum...",
     "🌟 Kişisel önerileriniz hazır!"
@@ -117,9 +117,6 @@ export default function Home() {
                 Generative Store
               </span>
             </h1>
-            <p className="mt-3 text-base sm:text-lg text-gray-600 max-w-2xl mx-auto">
-              Duygularınızı anlayan AI alışveriş asistanınız
-            </p>
           </div>
         </div>
       </header>

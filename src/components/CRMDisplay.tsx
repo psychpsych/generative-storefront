@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react'
 interface CRMData {
   name: string
   age: number
+  gender: string
   location: string
   loyaltyTier: string
   totalSpent: number
@@ -68,6 +69,7 @@ const CRMDisplay: React.FC<CRMDisplayProps> = ({ userId = 'user_001', onUserSwit
       'user_001': {
         name: 'Sofia Chen',
         age: 29,
+        gender: 'female',
         location: 'New York',
         loyaltyTier: 'Gold',
         totalSpent: 2847.50,
@@ -84,6 +86,7 @@ const CRMDisplay: React.FC<CRMDisplayProps> = ({ userId = 'user_001', onUserSwit
       'user_002': {
         name: 'Emma Rodriguez',
         age: 24,
+        gender: 'female',
         location: 'Los Angeles',
         loyaltyTier: 'Silver',
         totalSpent: 1289.75,
@@ -100,6 +103,7 @@ const CRMDisplay: React.FC<CRMDisplayProps> = ({ userId = 'user_001', onUserSwit
       'user_003': {
         name: 'Isabella Park',
         age: 35,
+        gender: 'female',
         location: 'Paris',
         loyaltyTier: 'Platinum',
         totalSpent: 5247.80,
@@ -213,7 +217,7 @@ const CRMDisplay: React.FC<CRMDisplayProps> = ({ userId = 'user_001', onUserSwit
             <div className="text-xs text-gray-600 space-y-1">
               <div className="flex justify-between">
                 <span>Age:</span>
-                <span>{crmData.age} • {crmData.location}</span>
+                <span>{crmData.age} • {crmData.gender} • {crmData.location}</span>
               </div>
               <div className="flex justify-between">
                 <span>Total Spent:</span>
