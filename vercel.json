@@ -1,0 +1,9 @@
+{
+  "name": "generative-storefront",
+  "version": "0.1.0",
+  "homepage": ".",
+  "scripts": {
+    "build": "next build",
+    "start": "next start"
+  }
+}
