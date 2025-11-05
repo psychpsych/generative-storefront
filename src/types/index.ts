@@ -65,6 +65,12 @@ export interface Click {
 }
 
 export interface ChatGPTResponse {
+  personalized_intro?: {
+    greeting: string;
+    context_recognition: string;
+    expertise_connection: string;
+    curation_promise: string;
+  };
   suggestions: ProductSuggestion[];
   mood_analysis?: string;
   confidence_score?: number;

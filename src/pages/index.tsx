@@ -245,6 +245,36 @@ export default function Home() {
           {/* Suggestions Section */}
           {suggestions.length > 0 && !isLoading && (
             <div className="space-y-6">
+              {/* Personalized Intro */}
+              {(suggestions as any)[0]?.personalized_intro && (
+                <div className="bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl shadow-lg border border-purple-100 p-6 sm:p-8">
+                  <div className="flex items-center gap-3 mb-4">
+                    <span className="text-2xl">✨</span>
+                    <span className="text-sm font-medium text-purple-600 uppercase tracking-wide">
+                      Kişisel Öneri Asistanınız
+                    </span>
+                  </div>
+                  
+                  <div className="space-y-4 text-gray-700">
+                    <p className="text-lg font-medium text-gray-900">
+                      {(suggestions as any)[0].personalized_intro.greeting}
+                    </p>
+                    
+                    <p className="leading-relaxed">
+                      {(suggestions as any)[0].personalized_intro.context_recognition}
+                    </p>
+                    
+                    <p className="leading-relaxed">
+                      {(suggestions as any)[0].personalized_intro.expertise_connection}
+                    </p>
+                    
+                    <p className="font-medium text-purple-700 leading-relaxed">
+                      {(suggestions as any)[0].personalized_intro.curation_promise}
+                    </p>
+                  </div>
+                </div>
+              )}
+
               {/* User Intent Display */}
               <div className="bg-white/70 backdrop-blur-sm rounded-2xl shadow-lg border border-white/20 p-4 sm:p-6">
                 <div className="flex items-center gap-3 mb-2">

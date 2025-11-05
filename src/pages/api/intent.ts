@@ -227,6 +227,12 @@ Build a bespoke digital boutique that:
 
 Return ONLY valid JSON that will generate their personalized storefront:
 {
+  "personalized_intro": {
+    "greeting": "Personal greeting using their name and acknowledging their request",
+    "context_recognition": "Acknowledgment of their current mood/situation/intent (2-3 sentences)",
+    "expertise_connection": "How your AI understands their specific style DNA and preferences (2-3 sentences)",
+    "curation_promise": "What makes this selection special for them right now (1-2 sentences)"
+  },
   "suggestions": [
     {
       "id": "product_id",
@@ -282,6 +288,12 @@ Their emotional state suggests they need ${shoppingContext.primaryEmotion} piece
       console.error('Failed to parse AI response:', parseError)
       // Fallback response
       parsedResponse = {
+        personalized_intro: {
+          greeting: `Merhaba ${userProfile?.name || 'Değerli Müşterimiz'}! Size özel seçenekler hazırlıyoruz.`,
+          context_recognition: `"${intent}" isteğinizi anlıyor ve size en uygun ürünleri bulmaya çalışıyoruz.`,
+          expertise_connection: `${userProfile?.gender === 'female' ? 'Kadın' : userProfile?.gender === 'male' ? 'Erkek' : 'Sizin'} stilinize ve tercihlerinize uygun seçenekleri özellikle seçtik.`,
+          curation_promise: `Bu seçim, sizin için özenle hazırlanmış özel bir koleksiyon.`
+        },
         suggestions: [
           {
             id: uuidv4(),
