@@ -816,7 +816,7 @@ export class ProductDatabase {
     const personalizationData = CRMService.getPersonalizationData(userId);
     
     // Start with intelligent search
-    let results = this.intelligentSearch(intent);
+    const results = this.intelligentSearch(intent);
     
     if (!userProfile) {
       return results; // Return basic results if no user profile
