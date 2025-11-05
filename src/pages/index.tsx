@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import type { ProductSuggestion } from '@/types';
+import type { ProductSuggestion, ChatGPTResponse } from '@/types';
 import CRMDisplay from '@/components/CRMDisplay';
 
 interface SessionData {
@@ -12,6 +12,7 @@ interface SessionData {
 export default function Home() {
   const [userIntent, setUserIntent] = useState<string>('');
   const [suggestions, setSuggestions] = useState<ProductSuggestion[]>([]);
+  const [personalizedIntro, setPersonalizedIntro] = useState<ChatGPTResponse['personalized_intro'] | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [currentUserId, setCurrentUserId] = useState<string>('user_001'); // Track active user
   const [sessionData] = useState<SessionData>({
@@ -80,6 +81,7 @@ export default function Home() {
         
         setTimeout(() => {
           setSuggestions(data.suggestions || []);
+          setPersonalizedIntro(data.personalized_intro || null);
           setIsLoading(false);
           setLoadingMessages([]);
         }, 600);
@@ -89,6 +91,7 @@ export default function Home() {
       console.error('Error:', error);
       setIsLoading(false);
       setLoadingMessages([]);
+      setPersonalizedIntro(null);
     }
   };
 
@@ -97,6 +100,7 @@ export default function Home() {
     setCurrentUserId(newUserId);
     // Clear suggestions when switching users to force new search
     setSuggestions([]);
+    setPersonalizedIntro(null);
     // Show a brief notification that user has switched
     console.log(`🔄 Main App: Switched to user: ${newUserId}`);
   };
@@ -104,6 +108,7 @@ export default function Home() {
   const handleNewSearch = () => {
     setUserIntent('');
     setSuggestions([]);
+    setPersonalizedIntro(null);
   };
 
   return (
@@ -246,7 +251,7 @@ export default function Home() {
           {suggestions.length > 0 && !isLoading && (
             <div className="space-y-6">
               {/* Personalized Intro */}
-              {(suggestions as any)[0]?.personalized_intro && (
+              {personalizedIntro && (
                 <div className="bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl shadow-lg border border-purple-100 p-6 sm:p-8">
                   <div className="flex items-center gap-3 mb-4">
                     <span className="text-2xl">✨</span>
@@ -257,19 +262,19 @@ export default function Home() {
                   
                   <div className="space-y-4 text-gray-700">
                     <p className="text-lg font-medium text-gray-900">
-                      {(suggestions as any)[0].personalized_intro.greeting}
+                      {personalizedIntro.greeting}
                     </p>
                     
                     <p className="leading-relaxed">
-                      {(suggestions as any)[0].personalized_intro.context_recognition}
+                      {personalizedIntro.context_recognition}
                     </p>
                     
                     <p className="leading-relaxed">
-                      {(suggestions as any)[0].personalized_intro.expertise_connection}
+                      {personalizedIntro.expertise_connection}
                     </p>
                     
                     <p className="font-medium text-purple-700 leading-relaxed">
-                      {(suggestions as any)[0].personalized_intro.curation_promise}
+                      {personalizedIntro.curation_promise}
                     </p>
                   </div>
                 </div>
