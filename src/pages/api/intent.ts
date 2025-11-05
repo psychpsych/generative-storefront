@@ -89,7 +89,18 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<ChatGPTResponse | { error: string }>
 ) {
+  // Set CORS headers
+  res.setHeader('Access-Control-Allow-Origin', '*')
+  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS')
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type')
+  
+  // Explicitly handle different HTTP methods
+  if (req.method === 'OPTIONS') {
+    return res.status(200).end()
+  }
+  
   if (req.method !== 'POST') {
+    res.setHeader('Allow', ['POST'])
     return res.status(405).json({ error: 'Method not allowed' })
   }
 
@@ -317,4 +328,16 @@ Their emotional state suggests they need ${shoppingContext.primaryEmotion} piece
     console.error('Error in intent API:', error)
     res.status(500).json({ error: 'Internal server error' })
   }
+}
+
+// Vercel function configuration
+export const config = {
+  api: {
+    bodyParser: {
+      sizeLimit: '1mb',
+    },
+  },
+  // Specify runtime for Vercel
+  runtime: 'nodejs18.x',
+  maxDuration: 30, // 30 seconds max duration
 }
