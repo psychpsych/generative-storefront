@@ -337,7 +337,6 @@ export const config = {
       sizeLimit: '1mb',
     },
   },
-  // Specify runtime for Vercel
-  runtime: 'nodejs18.x',
+  // Remove unsupported runtime specification
   maxDuration: 30, // 30 seconds max duration
 }
